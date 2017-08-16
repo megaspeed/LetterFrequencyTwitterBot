@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Statistics
@@ -7,7 +8,7 @@ namespace Statistics
     {
         public FrequencyStatistic ComputeStatistic(IEnumerable<string> messages)
         {
-            var allChars = string.Join("", messages).ToArray();
+            var allChars = string.Join("", messages).Where(Char.IsLetter).Select(Char.ToLower).ToArray();
             var frequencyStatistic = new FrequencyStatistic();
 
             if (allChars.Length == 0)
